@@ -1,12 +1,69 @@
 ﻿<Window x:Class="APTIV2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:APTIV2"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="480"
+        Width="800"
+        Loaded="WindowLoaded"
+        WindowState="Maximized">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvToken"
+                  Grid.Row="1"
+                  VirtualizingPanel.IsVirtualizing="True">
+
+            <ListView.Resources>
+                <ControlTemplate x:Key="Error"
+                                 TargetType='{x:Type ListViewItem}'>
+                    <StackPanel Background="Tomato">
+                        <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                              Columns="{TemplateBinding GridView.ColumnCollection}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </ListView.Resources>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Name}"
+                                     Value="ERROR">
+                            <Setter Property="Template"
+                                    Value="{StaticResource Error}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Token"
+                                    DisplayMemberBinding="{Binding Path=Name}"
+                                    Width="150" />
+                    <GridViewColumn Header="Lexema"
+                                    DisplayMemberBinding="{Binding Path=Lexema}"
+                                    Width="600" />
+                    <GridViewColumn Header="Linea"
+                                    DisplayMemberBinding="{Binding Path=Linea}"
+                                    Width="70" />
+                    <GridViewColumn Header="Columna"
+                                    DisplayMemberBinding="{Binding Path=Columna}"
+                                    Width="70" />
+                    <GridViewColumn Header="Indice"
+                                    DisplayMemberBinding="{Binding Path=Index}"
+                                    Width="70" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="tbxCode"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Visible"
+                 TextChanged="CodeChanged"
+                 AcceptsReturn="True"
+                 AcceptsTab="True"
+                 Padding="5,0,0,0" />
     </Grid>
 </Window>
+
