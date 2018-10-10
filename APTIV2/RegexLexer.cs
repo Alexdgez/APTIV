@@ -64,7 +64,7 @@ namespace APTIV2
         /// <param name="text">entrada a analizar</param>
         public IEnumerable<Token> GetTokens(string text)
         {
-            if (requiereCompilar) throw new Exception("Compilación Requerid");
+            if (requiereCompilar) throw new Exception("Compilación Requerida, llame al método Compile(options).");
 
             Match match = rex.Match(text);
 
