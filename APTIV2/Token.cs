@@ -16,7 +16,7 @@ namespace APTIV2
             Linea = linea;
             Columna = columna;
         }
-
+        //definicion de los tokens
         public string Name { get; set; }
         public string Lexema { get; private set; }
 

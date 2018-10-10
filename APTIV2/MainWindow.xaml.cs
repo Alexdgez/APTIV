@@ -43,7 +43,6 @@ namespace APTIV2
                 csLexer.AddTokenRule(@"\s+", "ESPACIO", true);
                 csLexer.AddTokenRule(@"\b[a-zA-Z][\w]*\b", "IDENTIFICADOR");
                 csLexer.AddTokenRule("##[^\r\n]*", "COMENTARIO");
-                //csLexer.AddTokenRule("//[*].*?[*]/", "COMENTARIO2");
                 csLexer.AddTokenRule(@"\d*\.?\d+", "NUMERO");
                 csLexer.AddTokenRule(@"[;]", "FINLINEA");
                 csLexer.AddTokenRule(@"[\(\)\{\}\[\]]", "AGRUPADOR");
