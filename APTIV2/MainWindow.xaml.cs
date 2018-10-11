@@ -76,8 +76,7 @@ namespace APTIV2
                 if (tk.Name == "IDENTIFICADOR")
                     if (palabrasReservadas.Contains(tk.Lexema))
                         tk.Name = "RESERVADO";
-                if (tk.Name == "IDENTIFICADOR")
-                    if (tipos.Contains(tk.Lexema))
+                    else if (tipos.Contains(tk.Lexema))
                         tk.Name = "TIPOS";
 
                 lvToken.Items.Add(tk);
