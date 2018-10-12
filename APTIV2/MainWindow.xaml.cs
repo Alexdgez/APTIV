@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -46,10 +47,9 @@ namespace APTIV2
                 csLexer.AddTokenRule(@"\d*\.?\d+", "NUMERO");
                 csLexer.AddTokenRule(@"[;]", "FINLINEA");
                 csLexer.AddTokenRule(@"[\(\)\{\}\[\]]", "AGRUPADOR");
-                csLexer.AddTokenRule(@"[\--\++\^\+\-/*%]", "OPERARIT");
+                csLexer.AddTokenRule(@"[\^\+\-/*%]", "OPERARIT");
                 csLexer.AddTokenRule(@"~~", "INCREMENTO");
                 csLexer.AddTokenRule(@"``", "DECREMENTO");
-                csLexer.AddTokenRule(@"=", "ASIGNADOR");
                 csLexer.AddTokenRule(@"&&|>|<|==|>=|<=|!", "OPERLOG");
 
                 palabrasReservadas = new List<string>() {"Momletme", "Dadletme", "YOLO", "Party", "Work",
@@ -62,6 +62,7 @@ namespace APTIV2
                 load = true;
                 AnalizeCode();
                 tbxCode.Focus();
+                Console.WriteLine(sr);
             }
         }
 
@@ -93,7 +94,39 @@ namespace APTIV2
             if (load)
                 AnalizeCode();
         }
+        //method to import txt file for lexical analysis
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Console.WriteLine("Hello World");
 
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            tbxCode.Text = File.ReadAllText(openFileDialog1.FileName);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+
+        }
     }
+    
 }
 
