@@ -49,6 +49,7 @@ namespace APTIV2
                 csLexer.AddTokenRule(@"[\(\)\{\}\[\]]", "AGRUPADOR");
                 csLexer.AddTokenRule(@"[\^\+\-/*%]", "OPERARIT");
                 csLexer.AddTokenRule(@"~~", "INCREMENTO");
+                csLexer.AddTokenRule(@"=", "ASIGNADOR");
                 csLexer.AddTokenRule(@"``", "DECREMENTO");
                 csLexer.AddTokenRule(@"&&|>|<|==|>=|<=|!", "OPERLOG");
 
