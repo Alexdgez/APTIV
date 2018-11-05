@@ -49,9 +49,9 @@ namespace APTIV2
                 csLexer.AddTokenRule(@"[\(\)\{\}\[\]]", "AGRUPADOR");
                 csLexer.AddTokenRule(@"[\^\+\-/*%]", "OPERARIT");
                 csLexer.AddTokenRule(@"~~", "INCREMENTO");
-                csLexer.AddTokenRule(@"=", "ASIGNADOR");
                 csLexer.AddTokenRule(@"``", "DECREMENTO");
                 csLexer.AddTokenRule(@"&&|>|<|==|>=|<=|!", "OPERLOG");
+                csLexer.AddTokenRule(@"'[^\r\n]'","STRNG");
 
                 palabrasReservadas = new List<string>() {"Momletme", "Dadletme", "YOLO", "Party", "Work",
                                                         "mainchick"};
@@ -126,6 +126,23 @@ namespace APTIV2
                 }
             }
 
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            //List<string> items = lvToken.Items.Cast<ListViewItem>().Select(item => item.Text).ToList();
+
+            string[] items = { "45", "hewllo" };
+
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter outFile = new StreamWriter(System.IO.Path.Combine(docPath, "TablaSim.txt")))
+            {
+                foreach (string line in items)
+                {
+                    outFile.WriteLine(line);
+                }
+            }
         }
     }
     
