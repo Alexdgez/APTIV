@@ -86,7 +86,7 @@ namespace APTIV2
 
                 lvToken.Items.Add(tk);
                 toks = tk.ToString();
-                simtab.Add(tk.Name + " " + tk.Lexema);
+                simtab.Add(tk.Name + " " + tk.Lexema + " " + tk.Index + " " + tk.Linea + " " +  tk.Columna);
                 n++;
             }
 
