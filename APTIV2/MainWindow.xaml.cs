@@ -73,6 +73,7 @@ namespace APTIV2
             lvToken.Items.Clear();
 
             int n = 0, e = 0;
+            simtab.Add("Name Lexema Index Linea Columna");
 
             foreach (var tk in csLexer.GetTokens(tbxCode.Text))
             {
