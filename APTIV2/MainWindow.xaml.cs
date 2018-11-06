@@ -85,6 +85,8 @@ namespace APTIV2
                         tk.Name = "TIPOS";
 
                 lvToken.Items.Add(tk);
+                toks = tk.ToString();
+                simtab.Add(tk.Name + " " + tk.Lexema);
                 n++;
             }
 
@@ -131,15 +133,12 @@ namespace APTIV2
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            //List<string> items = lvToken.Items.Cast<ListViewItem>().Select(item => item.Text).ToList();
-
-            string[] items = { "45", "hewllo" };
 
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             using (StreamWriter outFile = new StreamWriter(System.IO.Path.Combine(docPath, "TablaSim.txt")))
             {
-                foreach (string line in items)
+                foreach (string line in simtab)
                 {
                     outFile.WriteLine(line);
                 }
