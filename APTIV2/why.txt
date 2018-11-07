@@ -1,0 +1,20 @@
+##include <stdio.h>
+Bro mainchick(){
+	Bro i;
+	Bro j;
+	Bro row = 5;
+	Bro count = 0;
+	
+	Party(Bro = 1; i <= 2*rows; i=i+2){
+		Party(j=1; j <= i; j``){
+			printf('%c', 'A'+count);
+			Momletme(j <= i/2)
+				count``;
+			YOLO
+				count~~;
+		}
+		count~~;
+		printf("\n");	
+	}
+	return (0);
+}
