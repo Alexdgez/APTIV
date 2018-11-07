@@ -131,6 +131,20 @@ namespace APTIV2
             }
 
         }
+        
+        private void sintactico() {
+            string sentencia = "";
+            int numlinea = 1;
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter outfile = new StreamWriter(System.IO.Path.Combine(docPath, "Sentencias.txt"))){
+                foreach (var tk in csLexer.GetTokens(tbxCode.Text)) {
+                    sentencia = sentencia + " " + tk.Name.ToString();
+                    outfile.WriteLine(sentencia);
+                }
+                System.Windows.MessageBox.Show(sentencia);
+            }
+        }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
@@ -144,6 +158,7 @@ namespace APTIV2
                     outFile.WriteLine(line);
                 }
             }
+            sintactico();
         }
     }
     
